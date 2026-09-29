@@ -498,13 +498,15 @@ footer { padding: 28px 0 calc(24px + env(safe-area-inset-bottom, 0px)); text-ali
 .page-head .back svg { width: 16px; height: 16px; }
 .page-head h1 { font-size: clamp(40px, 7vw, 84px); font-weight: 700; letter-spacing: -0.045em; line-height: 0.98; }
 .page-head .lede { margin-top: 16px; color: var(--fg-2); font-size: 17px; max-width: 60ch; }
-.list { display: grid; gap: 14px; margin-top: 40px; }
+.page-head .lede.mono { font-family: var(--font-mono); font-size: 12.5px; color: var(--fg-3); letter-spacing: 0.04em; font-variant-numeric: tabular-nums; }
+main.page-main { gap: 36px; }
+.list { display: grid; gap: 14px; }
 .entry { --r: var(--radius-lg); padding: 26px 28px; display: grid; grid-template-columns: 92px 1fr; gap: 20px; transition: transform 0.45s var(--ease-spring); }
 .entry:hover { transform: translateY(-3px); }
 .entry .year { font-family: var(--font-display); font-size: 30px; font-weight: 700; letter-spacing: -0.04em; color: var(--fg-3); line-height: 1; font-variant-numeric: tabular-nums; }
 .entry h2 { font-size: 22px; font-weight: 650; letter-spacing: -0.025em; line-height: 1.2; }
 .entry .org { color: var(--fg-2); font-size: 14px; margin-top: 6px; }
-.entry p { margin-top: 12px; color: var(--fg); font-size: 15.5px; line-height: 1.6; max-width: 70ch; }
+.entry p { margin-top: 12px; color: var(--fg); font-size: 15.5px; line-height: 1.6; max-width: none; text-align: justify; hyphens: manual; -webkit-hyphens: manual; }
 .entry .foot { margin-top: 16px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
 .entry .status { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; font-family: var(--font-mono); font-size: 11.5px; letter-spacing: 0.04em; color: var(--fg-2); background: var(--glass-strong); box-shadow: inset 0 0 0 1px var(--hairline); }
 

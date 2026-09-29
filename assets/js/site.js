@@ -186,6 +186,31 @@
     if (tg) tg.addEventListener("click", function () { setTimeout(recolor, 0); });
   })();
 
+
+  /* ---------- hero: glass card at the top, opens up on scroll ---------- */
+  var hero = document.querySelector(".hero");
+  if (hero) {
+    var heroTick = false;
+    var heroCopy = hero.querySelector(".hero-copy"), heroVisual = hero.querySelector(".hero-visual");
+    function heroUpdate() {
+      heroTick = false;
+      var range = window.innerWidth <= 760 ? 260 : 320;
+      var p = Math.min(1, Math.max(0, window.scrollY / range));
+      hero.style.setProperty("--p", p.toFixed(3));
+      hero.classList.toggle("is-card", p < 0.98);
+      if (window.innerWidth <= 760 && heroCopy && heroVisual) {
+        // where the photo sits when stacked, so it can be pulled up beside the text
+        var h1 = heroCopy.querySelector("h1");
+        var dy = (h1 ? h1.offsetTop : heroCopy.offsetTop) - heroVisual.offsetTop;
+        hero.style.setProperty("--dy", dy + "px");
+        hero.style.setProperty("--vh", heroVisual.offsetHeight + "px");
+      }
+    }
+    window.addEventListener("scroll", function () { if (!heroTick) { heroTick = true; requestAnimationFrame(heroUpdate); } }, { passive: true });
+    window.addEventListener("resize", heroUpdate);
+    heroUpdate();
+  }
+
   /* ---------- pointer specular on glass ---------- */
   if (finePointer) {
     document.addEventListener("pointermove", function (e) {

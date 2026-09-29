@@ -217,6 +217,7 @@
     window.addEventListener("scroll", function () { if (!heroTick) { heroTick = true; requestAnimationFrame(heroUpdate); } }, { passive: true });
     window.addEventListener("resize", function () { measure(); heroUpdate(); });
     measure(); heroUpdate();
+    requestAnimationFrame(function () { requestAnimationFrame(function () { hero.classList.add("ready"); }); });
   }
 
   /* ---------- pointer specular on glass ---------- */

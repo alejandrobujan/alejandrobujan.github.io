@@ -198,6 +198,11 @@
       var h1 = heroCopy.querySelector("h1");
       hero.style.setProperty("--dy", ((h1 ? h1.offsetTop : heroCopy.offsetTop) - heroVisual.offsetTop) + "px");
       hero.style.setProperty("--vh", heroVisual.offsetHeight + "px");
+      // centre the closed card vertically; keep the value fixed afterwards so opening never shifts layout
+      if (!heroOpen && window.scrollY < 25) {
+        var mt = Math.max(84, Math.round((window.innerHeight - hero.offsetHeight) / 2));
+        hero.style.setProperty("--hero-mt", mt + "px");
+      }
     }
     function heroUpdate() {
       heroTick = false;

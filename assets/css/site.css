@@ -508,7 +508,7 @@ footer { padding: 28px 0 calc(24px + env(safe-area-inset-bottom, 0px)); text-ali
   /* phones: card opens/closes with one transition at a scroll threshold; nothing in the layout
      changes between states (constant padding/gap, name always on two lines) so only the photo
      transform and the card surface animate */
-  .hero { padding: var(--card-pad); row-gap: 16px; --hero-fill-a: 0.09; transition: background 1.4s ease, box-shadow 1.4s ease; }
+  .hero { padding: var(--card-pad); row-gap: 16px; --hero-fill-a: 0.09; margin-top: var(--hero-mt, clamp(84px, 14vw, 150px)); transition: background 1.4s ease, box-shadow 1.4s ease; }
   .hero::before { transition: opacity 1.4s ease; }
   .hero h1 { font-size: 40px; }
   .hero h1 .first, .hero h1 .last { display: block; }

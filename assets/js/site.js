@@ -190,25 +190,33 @@
   /* ---------- hero: glass card at the top, opens up on scroll ---------- */
   var hero = document.querySelector(".hero");
   if (hero) {
-    var heroTick = false;
+    var heroTick = false, heroOpen = false, measureTimer = null;
     var heroCopy = hero.querySelector(".hero-copy"), heroVisual = hero.querySelector(".hero-visual");
+    function isPhone() { return window.innerWidth <= 760; }
+    function measure() {
+      if (!isPhone() || !heroCopy || !heroVisual) return;
+      var h1 = heroCopy.querySelector("h1");
+      hero.style.setProperty("--dy", ((h1 ? h1.offsetTop : heroCopy.offsetTop) - heroVisual.offsetTop) + "px");
+      hero.style.setProperty("--vh", heroVisual.offsetHeight + "px");
+    }
     function heroUpdate() {
       heroTick = false;
-      var range = window.innerWidth <= 760 ? 260 : 320;
-      var p = Math.min(1, Math.max(0, window.scrollY / range));
+      var p;
+      if (isPhone()) {
+        // hysteresis so it does not flap around the threshold
+        if (!heroOpen && window.scrollY > 70) heroOpen = true;
+        else if (heroOpen && window.scrollY < 25) heroOpen = false;
+        p = heroOpen ? 1 : 0;
+        if (!heroOpen) { clearTimeout(measureTimer); measureTimer = setTimeout(measure, 600); }
+      } else {
+        p = Math.min(1, Math.max(0, window.scrollY / 320));
+      }
       hero.style.setProperty("--p", p.toFixed(3));
       hero.classList.toggle("is-card", p < 0.98);
-      if (window.innerWidth <= 760 && heroCopy && heroVisual) {
-        // where the photo sits when stacked, so it can be pulled up beside the text
-        var h1 = heroCopy.querySelector("h1");
-        var dy = (h1 ? h1.offsetTop : heroCopy.offsetTop) - heroVisual.offsetTop;
-        hero.style.setProperty("--dy", dy + "px");
-        hero.style.setProperty("--vh", heroVisual.offsetHeight + "px");
-      }
     }
     window.addEventListener("scroll", function () { if (!heroTick) { heroTick = true; requestAnimationFrame(heroUpdate); } }, { passive: true });
-    window.addEventListener("resize", heroUpdate);
-    heroUpdate();
+    window.addEventListener("resize", function () { measure(); heroUpdate(); });
+    measure(); heroUpdate();
   }
 
   /* ---------- pointer specular on glass ---------- */

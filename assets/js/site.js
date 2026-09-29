@@ -208,8 +208,10 @@
         else if (heroOpen && window.scrollY < 25) heroOpen = false;
         p = heroOpen ? 1 : 0;
         if (!heroOpen) { clearTimeout(measureTimer); measureTimer = setTimeout(measure, 600); }
+        root.classList.toggle("hero-closed", !heroOpen);
       } else {
         p = Math.min(1, Math.max(0, window.scrollY / 320));
+        root.classList.remove("hero-closed");
       }
       hero.style.setProperty("--p", p.toFixed(3));
       hero.classList.toggle("is-card", p < 0.98);

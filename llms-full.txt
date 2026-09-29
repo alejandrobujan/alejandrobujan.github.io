@@ -34,6 +34,7 @@ LinkedIn: https://www.linkedin.com/in/alejandrobujan/ · GitHub: https://github.
 - Best Applied Bachelor's Thesis, second prize, School of Computer Science, University of A Coruña, 2024 (500 €).
 - Peer-reviewed publication: "Development of a PLE Factory Environment with GitLab Integration and following ISO/IEC 26580", SPLC '24 (ACM), Luxembourg. https://doi.org/10.1145/3646548.3678013
 - Three merit-based research fellowships during the stay at CITIC (2022 – 2024): Open Source Scientific Thesis Grant (CICAS Chair, one of only four students in the university, 2024), Collaboration Scholarship of the Spanish Ministry of Education (national, 2023) and Collaboration Scholarship of the University of A Coruña (2022).
+- CiTIUS Summer Research Fellowship, 2023: merit-based one-month research stay at the Singular Research Centre in Intelligent Technologies of the University of Santiago de Compostela. Open call to undergraduates from any university, Spanish or foreign, ranked primarily on academic record; one of 14 fellows selected in the ninth edition.
 
 ### 5. Professional
 - Full-stack Developer at Invofox (Y Combinator S22), Sep 2024 – Apr 2026, working directly with the founders of an AI startup.
@@ -103,7 +104,7 @@ National-level bronze medal at WorldSkills Spain in the Network Systems Administ
 ### Gold Medal in Network Systems Administration — WorldSkills Galicia (Regional), Regional Government of Galicia — 2018
 Gold medal in the regional WorldSkills Galicia competition in Network Systems Administration, qualifying to represent the region at the national level.
 
-## Recognition — Merit-based Scholarships (7 entries, 2022 — 2026)
+## Recognition — Merit-based Scholarships (8 entries, 2022 — 2026)
 ### The Exponential Fellowship — Barrié Foundation — 2026
 High-performance excellence program for top STEM graduates and technical professionals designed to accelerate the next generation of tech founders in Spain. It grants a full international immersion through employment and advanced mentorship as an Engineer at top-tier companies in Silicon Valley, including visa sponsorship, health insurance, travel expenses, and a competitive annual salary.
 Links: https://www.goexponential.org/ · https://www.linkedin.com/feed/update/urn:li:activity:7500594634780295168/
@@ -116,6 +117,10 @@ Merit-based funding awarded to only four students across the university for the 
 
 ### Collaboration Scholarship — Ministry of Education and Vocational Training, Government of Spain — 2023
 Highly competitive, merit-based national scholarship granted by the Spanish Ministry of Education to support student involvement in university research projects (2000 €).
+
+### CiTIUS Summer Research Fellowship — CiTIUS, University of Santiago de Compostela — 2023
+Merit-based fellowship from the Singular Research Centre in Intelligent Technologies of the USC, funded by the Regional Government of Galicia. Open to undergraduates from any university, in Spain or abroad, and ranked primarily on academic record, it selected 14 fellows in its ninth edition for a one-month research stay developing a project in Intelligent Technologies under the supervision of the centre's researchers (750 € plus travel expenses).
+Link: https://citius.gal/en/talent/job-offers/expressions-of-interest/citius-summer-fellowships-2023/
 
 ### Collaboration Scholarship — University of A Coruña — 2022
 Merit-based scholarship awarded by the University of A Coruña to support undergraduate research and academic collaboration within university departments (1680 €).

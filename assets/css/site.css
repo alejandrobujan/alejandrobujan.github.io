@@ -491,8 +491,11 @@ footer { padding: 28px 0 calc(24px + env(safe-area-inset-bottom, 0px)); text-ali
 @media (max-width: 520px) {
   .awards-grid { grid-template-columns: 1fr; }
   .award { min-height: 0; }
-  .tl-row { grid-template-columns: 44px 1fr; }
-  .tl-row .date { grid-column: 2; text-align: left; }
+  .tl-row { grid-template-columns: 44px 1fr; padding: 13px 14px; }
+  .tl-row .date { grid-column: 2; text-align: left; margin-top: 4px; font-size: 12px; }
+  .tl-row .date br { display: none; }
+  .tl-row .date .d2::before { content: " "; }
+  .tl-row .date .d1:has(.now) + .d2::before { content: " · "; }
   .tl-row .chev { top: 22px; }
   .logo-tile { width: 44px; height: 44px; border-radius: 12px; }
   .entry { grid-template-columns: 1fr; gap: 10px; padding: 22px; }

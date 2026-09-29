@@ -560,8 +560,10 @@ footer { padding: 28px 0 calc(24px + env(safe-area-inset-bottom, 0px)); text-ali
   .hero.ready .float { transition: opacity 0.9s ease; }
   .float { opacity: var(--p); }
   /* everything below the card stays hidden until the card opens */
-  .js main > :not(.hero), .js footer { transition: opacity 0.9s ease 1.15s; } /* wait for the photo to settle */
-  .hero-closed main > :not(.hero), .hero-closed footer { opacity: 0; pointer-events: none; transition-delay: 0s; }
+  /* while the card is opening, the content below waits for the photo to settle; at any other time the
+     sections keep their normal scroll-reveal transitions */
+  .hero-opening main > :not(.hero), .hero-opening footer { transition: opacity 0.9s ease 1.15s; }
+  .hero-closed main > :not(.hero), .hero-closed footer { opacity: 0 !important; pointer-events: none; transition: opacity 0.4s ease 0s; }
   .float { font-size: 12.5px; padding: 8px 12px 8px 8px; } .float img { width: 30px; height: 30px; }
 }
 @media (max-width: 520px) {

@@ -251,7 +251,7 @@
   /* ---------- hero: glass card at the top, opens up on scroll ---------- */
   var hero = document.querySelector(".hero");
   if (hero) {
-    var heroTick = false, heroOpen = false, measureTimer = null;
+    var heroTick = false, heroOpen = false, measureTimer = null, openingTimer = null;
     var heroCopy = hero.querySelector(".hero-copy"), heroVisual = hero.querySelector(".hero-visual");
     function isPhone() { return window.innerWidth <= 760; }
     function measure() {
@@ -274,6 +274,11 @@
         else if (heroOpen && window.scrollY < 25) heroOpen = false;
         p = heroOpen ? 1 : 0;
         if (!heroOpen) { clearTimeout(measureTimer); measureTimer = setTimeout(measure, 600); }
+        if (heroOpen && root.classList.contains("hero-closed")) {
+          root.classList.add("hero-opening");
+          clearTimeout(openingTimer); openingTimer = setTimeout(function () { root.classList.remove("hero-opening"); }, 2200);
+        }
+        if (!heroOpen) { root.classList.remove("hero-opening"); clearTimeout(openingTimer); }
         root.classList.toggle("hero-closed", !heroOpen);
       } else {
         p = Math.min(1, Math.max(0, window.scrollY / 320));

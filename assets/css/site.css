@@ -216,6 +216,8 @@ main { display: flex; flex-direction: column; gap: clamp(60px, 8vw, 104px); padd
   transition: transform 0.35s var(--ease-spring);
 }
 .chip:hover { transform: translateY(-2px); }
+.chip.glass { background: var(--float-fill); -webkit-backdrop-filter: none; backdrop-filter: none; }
+.chip.glass::after { display: none; }
 .chip svg { width: 16px; height: 16px; color: var(--fg-2); flex: none; }
 .chip .mono { font-family: var(--font-mono); font-size: 12.5px; color: var(--fg-2); }
 .chip .clock { font-variant-numeric: tabular-nums; }

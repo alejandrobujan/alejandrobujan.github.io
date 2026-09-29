@@ -82,6 +82,110 @@
     return { recolor: function () { recolor(); draw(last); } };
   })();
 
+
+  /* ---------- node network (pointer-reactive) ---------- */
+  (function () {
+    var c = document.getElementById("net");
+    if (!c || reduced) return;
+    var ctx = c.getContext("2d");
+    var dpr = Math.min(window.devicePixelRatio || 1, 1.5);
+    var W, H, nodes = [], N, LINK, mouse = { x: -1e4, y: -1e4, active: false }, running = true;
+    var lineRGB = "245, 245, 247", nodeColor = "rgba(245,245,247,.55)";
+    function recolor() {
+      var cs = getComputedStyle(c);
+      lineRGB = cs.getPropertyValue("--net-line").trim() || lineRGB;
+      nodeColor = cs.getPropertyValue("--net-node").trim() || nodeColor;
+    }
+    function size() {
+      W = window.innerWidth; H = window.innerHeight;
+      c.width = Math.round(W * dpr); c.height = Math.round(H * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var area = W * H;
+      N = Math.round(Math.min(90, Math.max(30, area / 16000)));
+      LINK = W < 760 ? 110 : 150;
+      while (nodes.length < N) nodes.push(spawn());
+      nodes.length = N;
+    }
+    function spawn() {
+      var a = Math.random() * Math.PI * 2, s = 0.12 + Math.random() * 0.18;
+      return { x: Math.random() * W, y: Math.random() * H, vx: Math.cos(a) * s, vy: Math.sin(a) * s, r: 1.2 + Math.random() * 1.4 };
+    }
+    function step() {
+      var R = 220, R2 = R * R;
+      for (var i = 0; i < nodes.length; i++) {
+        var n = nodes[i];
+        if (mouse.active) {
+          var dx = mouse.x - n.x, dy = mouse.y - n.y, d2 = dx * dx + dy * dy;
+          if (d2 < R2 && d2 > 1) {
+            var d = Math.sqrt(d2), f = (1 - d / R) * 0.035;
+            n.vx += dx / d * f; n.vy += dy / d * f;
+          }
+        }
+        n.vx *= 0.985; n.vy *= 0.985;
+        var sp = Math.hypot(n.vx, n.vy);
+        if (sp < 0.08) { n.vx *= 1.05 + 0.001; n.vy *= 1.05 + 0.001; }
+        if (sp > 1.6) { n.vx *= 0.9; n.vy *= 0.9; }
+        n.x += n.vx; n.y += n.vy;
+        if (n.x < -20) n.x = W + 20; else if (n.x > W + 20) n.x = -20;
+        if (n.y < -20) n.y = H + 20; else if (n.y > H + 20) n.y = -20;
+      }
+    }
+    function draw() {
+      ctx.clearRect(0, 0, W, H);
+      var L2 = LINK * LINK;
+      ctx.lineWidth = 1;
+      for (var i = 0; i < nodes.length; i++) {
+        var a = nodes[i];
+        for (var k = i + 1; k < nodes.length; k++) {
+          var b = nodes[k];
+          var dx = a.x - b.x, dy = a.y - b.y, d2 = dx * dx + dy * dy;
+          if (d2 > L2) continue;
+          var t = 1 - Math.sqrt(d2) / LINK;
+          var boost = 0;
+          if (mouse.active) {
+            var mx = (a.x + b.x) / 2 - mouse.x, my = (a.y + b.y) / 2 - mouse.y;
+            var md = Math.sqrt(mx * mx + my * my);
+            if (md < 260) boost = (1 - md / 260) * 0.35;
+          }
+          ctx.strokeStyle = "rgba(" + lineRGB + "," + (t * 0.16 + boost).toFixed(3) + ")";
+          ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+        }
+      }
+      if (mouse.active) {
+        for (var j = 0; j < nodes.length; j++) {
+          var n = nodes[j], ex = n.x - mouse.x, ey = n.y - mouse.y, ed = Math.sqrt(ex * ex + ey * ey);
+          if (ed < 200) {
+            ctx.strokeStyle = "rgba(" + lineRGB + "," + ((1 - ed / 200) * 0.45).toFixed(3) + ")";
+            ctx.beginPath(); ctx.moveTo(mouse.x, mouse.y); ctx.lineTo(n.x, n.y); ctx.stroke();
+          }
+        }
+      }
+      ctx.fillStyle = nodeColor;
+      for (var m = 0; m < nodes.length; m++) {
+        var p = nodes[m], r = p.r;
+        if (mouse.active) {
+          var qx = p.x - mouse.x, qy = p.y - mouse.y, qd = Math.sqrt(qx * qx + qy * qy);
+          if (qd < 200) r += (1 - qd / 200) * 1.6;
+        }
+        ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, Math.PI * 2); ctx.fill();
+      }
+    }
+    function loop() { if (!running) return; step(); draw(); requestAnimationFrame(loop); }
+    recolor(); size(); requestAnimationFrame(loop);
+    window.addEventListener("resize", size);
+    window.addEventListener("pointermove", function (e) {
+      if (e.pointerType === "touch") return;
+      mouse.x = e.clientX; mouse.y = e.clientY; mouse.active = true;
+    }, { passive: true });
+    window.addEventListener("pointerleave", function () { mouse.active = false; });
+    document.addEventListener("mouseleave", function () { mouse.active = false; });
+    document.addEventListener("visibilitychange", function () {
+      running = !document.hidden; if (running) requestAnimationFrame(loop);
+    });
+    var tg = document.getElementById("theme-toggle");
+    if (tg) tg.addEventListener("click", function () { setTimeout(recolor, 0); });
+  })();
+
   /* ---------- pointer specular on glass ---------- */
   if (finePointer) {
     document.addEventListener("pointermove", function (e) {

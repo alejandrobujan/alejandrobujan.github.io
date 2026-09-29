@@ -25,6 +25,8 @@
   --glass: rgba(255, 255, 255, 0.07);
   --glass-strong: rgba(255, 255, 255, 0.1);
   --float-fill: rgba(28, 28, 30, 0.86);
+  --glass-solid: rgba(26, 26, 29, 0.80);
+  --glass-solid-strong: rgba(42, 42, 46, 0.86);
   --glass-edge: rgba(255, 255, 255, 0.18);
   --glass-edge-2: rgba(255, 255, 255, 0.06);
   --glass-spec: rgba(255, 255, 255, 0.18);
@@ -66,6 +68,8 @@
   --glass: rgba(255, 255, 255, 0.5);
   --glass-strong: rgba(255, 255, 255, 0.74);
   --float-fill: rgba(255, 255, 255, 0.86);
+  --glass-solid: rgba(255, 255, 255, 0.82);
+  --glass-solid-strong: rgba(255, 255, 255, 0.94);
   --glass-edge: rgba(255, 255, 255, 0.9);
   --glass-edge-2: rgba(29, 29, 31, 0.07);
   --glass-spec: rgba(255, 255, 255, 0.6);
@@ -321,6 +325,8 @@ main { display: flex; flex-direction: column; gap: clamp(60px, 8vw, 104px); padd
 .intro-on .hero, .intro-on main > :not(.hero), .intro-on footer { opacity: 0; }
 .intro-on .dock { opacity: 0; transform: translate(-50%, -16px); }
 .intro-on .hero h1 { opacity: 0; }
+.intro-done .hero h1 { transition: opacity 0.25s ease; }
+.intro.out .intro-h1 { transition: opacity 0.25s ease; opacity: 0; }
 .intro-on.landing .hero, .intro-on.landing main > :not(.hero), .intro-on.landing footer { opacity: 1; transition: opacity calc(1s * var(--k, 1)) ease calc(0.2s * var(--k, 1)); }
 .intro-on.landing .dock { opacity: 1; transform: translate(-50%, 0); transition: opacity calc(0.8s * var(--k, 1)) ease calc(0.5s * var(--k, 1)), transform calc(0.8s * var(--k, 1)) var(--ease-spring) calc(0.5s * var(--k, 1)); }
 @media (prefers-reduced-motion: reduce) { .intro { display: none; } .intro-on .hero, .intro-on .dock, .intro-on main > :not(.hero), .intro-on footer, .intro-on .hero h1 { opacity: 1; transform: none; } }
@@ -579,4 +585,14 @@ footer { padding: 28px 0 calc(24px + env(safe-area-inset-bottom, 0px)); text-ali
   .marquee .track { flex-wrap: wrap; width: auto; justify-content: center; }
   .marquee .track .dup { display: none; }
   .js .reveal, .js .reveal [data-stagger] > * { opacity: 1; transform: none; }
+}
+
+/* ---------- low-power profile for touch devices: no per-panel backdrop blur, no blend-mode grain ---------- */
+@media (hover: none), (max-width: 760px) {
+  .glass { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--glass-solid); }
+  .glass .glass, .glass-strong { background: var(--glass-solid-strong); }
+  .glass::after { display: none; }
+  .dock.glass { -webkit-backdrop-filter: blur(20px) saturate(1.6); backdrop-filter: blur(20px) saturate(1.6); background: var(--glass); }
+  .chip.glass, .float.glass { background: var(--float-fill); }
+  .grain { display: none; }
 }

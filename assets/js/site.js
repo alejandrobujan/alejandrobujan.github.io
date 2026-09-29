@@ -4,6 +4,7 @@
   root.classList.add("js");
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  var lowPower = window.matchMedia("(hover: none), (max-width: 760px)").matches;
 
   /* ---------- theme ---------- */
   function savedTheme() { try { return localStorage.getItem("theme"); } catch (e) { return null; } }
@@ -73,7 +74,7 @@
     }
     var last = 0;
     function loop(now) {
-      if (now - last > 40) { draw(now); last = now; }
+      if (now - last > (lowPower ? 90 : 40)) { draw(now); last = now; }
       if (!reduced) requestAnimationFrame(loop);
     }
     recolor(); size(); draw(0);
@@ -101,7 +102,7 @@
       c.width = Math.round(W * dpr); c.height = Math.round(H * dpr);
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       var area = W * H;
-      N = Math.round(Math.min(90, Math.max(30, area / 16000)));
+      N = lowPower ? Math.round(Math.min(34, Math.max(20, area / 22000))) : Math.round(Math.min(90, Math.max(30, area / 16000)));
       LINK = W < 760 ? 110 : 150;
       while (nodes.length < N) nodes.push(spawn());
       nodes.length = N;
@@ -170,7 +171,12 @@
         ctx.beginPath(); ctx.arc(p.x, p.y, r, 0, Math.PI * 2); ctx.fill();
       }
     }
-    function loop() { if (!running) return; step(); draw(); requestAnimationFrame(loop); }
+    var lastFrame = 0;
+    function loop(now) {
+      if (!running) return;
+      if (!lowPower || now - lastFrame > 32) { step(); draw(); lastFrame = now; }
+      requestAnimationFrame(loop);
+    }
     recolor(); size(); requestAnimationFrame(loop);
     window.addEventListener("resize", size);
     window.addEventListener("pointermove", function (e) {
@@ -207,16 +213,23 @@
       var k = fast ? 0.32 : 1;
       intro.style.setProperty("--k", k); root.style.setProperty("--k", k);
       intro.classList.add("p1", "p2", "p3");
-      // FLIP: move the intro title onto the real hero title
-      var a = ih1.getBoundingClientRect(), b = heroH1.getBoundingClientRect();
-      var s = b.width / a.width, dx = b.left - a.left, dy = b.top - a.top;
+      // FLIP: map the glyphs of "Alejandro" in the intro onto the same glyphs in the hero title
+      function textRect(el) { var r = document.createRange(); r.selectNodeContents(el); return r.getBoundingClientRect(); }
+      var A = textRect(ih1.querySelector(".first")), B = textRect(heroH1.querySelector(".first"));
+      var O = ih1.getBoundingClientRect(); // transform origin: top-left of the intro title box
+      var s = B.width / A.width;
+      var dx = B.left - O.left - (A.left - O.left) * s;
+      var dy = B.top - O.top - (A.top - O.top) * s;
       intro.classList.add("landing"); root.classList.add("landing");
       var anim = ih1.animate(
         [{ transform: "translate(0px, 0px) scale(1)" }, { transform: "translate(" + dx + "px, " + dy + "px) scale(" + s + ")" }],
         { duration: 1150 * k, easing: "cubic-bezier(0.32, 0.72, 0, 1)", fill: "forwards" });
       anim.onfinish = function () {
+        // cross-fade: real title in, clone out, then remove the overlay
+        root.classList.add("intro-done");
         root.classList.remove("intro-on", "landing"); root.style.removeProperty("--k");
-        if (intro.parentNode) intro.parentNode.removeChild(intro);
+        intro.classList.add("out");
+        setTimeout(function () { if (intro.parentNode) intro.parentNode.removeChild(intro); root.classList.remove("intro-done"); }, 320);
         try { sessionStorage.setItem("introPlayed", "1"); } catch (e) {}
       };
     }

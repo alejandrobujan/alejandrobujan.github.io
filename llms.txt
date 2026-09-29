@@ -1,0 +1,62 @@
+# Alejandro Buján
+
+> Engineer from Melide (Galicia, Spain), based in San Francisco. AI Lead at Base10 Partners and Exponential-Barrié Fellow. Interested in intelligent technologies, computer graphics and entrepreneurship.
+
+Site: https://alejandrobujan.com · Email: hi@alejandrobujan.com
+LinkedIn: https://www.linkedin.com/in/alejandrobujan/ · GitHub: https://github.com/alejandrobujan · X: https://x.com/alejandr0bujan
+
+## Now
+- AI Lead at Base10 Partners (venture capital firm, San Francisco), May 2026 – present. Building AI-native tooling for venture investing workflows.
+- Exponential-Barrié Fellow, 2026. The Exponential Fellowship (Fundación Barrié) is a high-performance excellence program that selects top STEM graduates and technical professionals in Spain and places them as engineers at top-tier Silicon Valley companies, with visa sponsorship. Evidence: https://www.linkedin.com/feed/update/urn:li:activity:7500594634780295168/
+- MS in Computer Science at Georgia Institute of Technology, specialization in Artificial Intelligence, 2026 – present (in parallel with the Base10 role).
+
+## Achievements, ordered by merit and difficulty
+
+### 1. Selective programs (national-level selection)
+- The Exponential Fellowship (Fundación Barrié), 2026. Selective program for the top Spanish STEM talent; grants employment as an engineer at top-tier Silicon Valley companies.
+- Fulbright Master's Scholarship, 2026, awarded and declined by choice. Highly competitive, merit-based funding granted by the Selection Committee on academic excellence, leadership potential and an impactful project (up to $45,000 per year plus insurance and travel).
+
+### 2. Academic distinctions (university-wide, top of cohort)
+- Extraordinary Bachelor's Degree Award, University of A Coruña, 2025. The highest possible university-wide distinction of each cohort, for the whole BEng in Computer Science.
+- Honour grades (matrícula de honor) in 20 courses of the BEng, including the bachelor's thesis (10).
+- Exchange at Hanyang University (Seoul), 2022, with distinction grades in four courses. Funded by a bilateral mobility scholarship in which he was ranked first among all applicants of the university.
+- Graduated with honours from both vocational programs at IES San Clemente; second place in the regional extraordinary awards for higher-level vocational education (Galicia, 2021).
+
+### 3. Competitions
+- First Prize, InditexTech Track, HackUPC 2025. HackUPC is the largest hackathon in Spain and the largest student hackathon in Europe (700+ participants, 30+ countries). Project: Echolook, an AI-powered virtual fitting room. https://devpost.com/software/echolook
+- Bronze medal, WorldSkills Spain 2019 (national), Network Systems Administration, representing Galicia.
+- Gold medal, WorldSkills Galicia 2018 (regional), Network Systems Administration, qualifying for the national final.
+
+### 4. Research, thesis and publication
+- Best Tool Presentation Award at ECSA 2024 / SPLC 2024 (ACM international conferences), for the tool developed in the bachelor's thesis.
+- Best Open Licensed BSc/MSc Thesis in Galicia (Amtega / CIXUG), 2024, for the same thesis (1500 €).
+- Best Applied Bachelor's Thesis, second prize, School of Computer Science, University of A Coruña, 2024 (500 €).
+- Peer-reviewed publication: "Development of a PLE Factory Environment with GitLab Integration and following ISO/IEC 26580", SPLC '24 (ACM), Luxembourg. https://doi.org/10.1145/3646548.3678013
+- Three merit-based research fellowships during the stay at CITIC (2022 – 2024): Open Source Scientific Thesis Grant (CICAS Chair, one of only four students in the university, 2024), Collaboration Scholarship of the Spanish Ministry of Education (national, 2023) and Collaboration Scholarship of the University of A Coruña (2022).
+
+### 5. Professional
+- Full-stack Developer at Invofox (Y Combinator S22), Sep 2024 – Apr 2026, working directly with the founders of an AI startup.
+- AI Lead at Base10 Partners (San Francisco), building AI-native tooling for venture investing workflows.
+
+## Experience
+- Full-stack Developer, Invofox (Y Combinator S22), Sep 2024 – Apr 2026. AI startup; full-stack development with the MERN stack in direct collaboration with the founders.
+- SWE Research Intern (part-time), CITIC, Nov 2022 – Jul 2024. Three merit-based fellowships; built a Product Line Engineering Development Factory integrated with GitLab (Quasar, Vue.js, Express.js, MongoDB, Cypress).
+- Software Development Intern, Learnovate Centre, Jun – Aug 2021. Moodle plugin for engagement in online learning; Moodle deployment and management.
+- Helpdesk and Data Center Support Intern, Teleperformance, Apr – Jun 2018. Active Directory, MDT imaging, remote support in Portuguese and English for clients such as Google, Facebook and Netflix.
+- General Judge (volunteer), HackSpain 2026, September 2026. https://hackspain.com/gran-premio
+
+## Education
+- BEng in Computer Science, University of A Coruña, 2020 – 2024. Extraordinary Bachelor's Degree Award.
+- Exchange in Computer Science, Hanyang University (Seoul), Feb – Jul 2022. Distinction grades in four courses.
+- Higher Technician in Multi-platform Application Development, IES San Clemente, 2018 – 2020. Graduated with honours; second place in the regional extraordinary vocational awards.
+- Technician in Microcomputer Systems and Networks, IES San Clemente, 2016 – 2018. Graduated with honours; Erasmus+ in Lisbon.
+
+## Recommendations
+- Pablo Álvarez Castro, Technical Leader at Learnovate Centre: "outstanding technical and interpersonal skills … far exceeded my expectations".
+- Tiago Seixas, Information Security Professional at Siemens: "very focused on achieving the proposed goals and a great team spirit".
+
+## Pages
+- Home: https://alejandrobujan.com/
+- Awards (8): https://alejandrobujan.com/awards/
+- Merit-based scholarships (7): https://alejandrobujan.com/scholarships/
+- Full text version: https://alejandrobujan.com/llms-full.txt

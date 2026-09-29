@@ -1,0 +1,222 @@
+{
+ "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+ "basics": {
+  "name": "Alejandro Buján",
+  "label": "Engineer · AI Lead at Base10 Partners · Exponential-Barrié Fellow",
+  "email": "hi@alejandrobujan.com",
+  "url": "https://alejandrobujan.com",
+  "image": "https://alejandrobujan.com/assets/img/alejandro.jpg",
+  "summary": "Born in Melide, a small town in Galicia, I build today in San Francisco. An engineer shaped by an international academic and professional path, I am drawn to intelligent technologies, computer graphics and entrepreneurship.",
+  "location": {
+   "city": "San Francisco",
+   "region": "CA",
+   "countryCode": "US"
+  },
+  "profiles": [
+   {
+    "network": "LinkedIn",
+    "username": "alejandrobujan",
+    "url": "https://www.linkedin.com/in/alejandrobujan/"
+   },
+   {
+    "network": "GitHub",
+    "username": "alejandrobujan",
+    "url": "https://github.com/alejandrobujan"
+   },
+   {
+    "network": "X",
+    "username": "alejandr0bujan",
+    "url": "https://x.com/alejandr0bujan"
+   }
+  ]
+ },
+ "work": [
+  {
+   "name": "Base10 Partners",
+   "position": "AI Lead",
+   "location": "San Francisco, CA",
+   "startDate": "2026-05",
+   "summary": "Building AI-native tooling for venture investing workflows"
+  },
+  {
+   "name": "Invofox (YC S22)",
+   "position": "Full-stack Developer",
+   "startDate": "2024-09",
+   "endDate": "2026-04",
+   "summary": "Contributing to a fast-growing AI startup backed by Y-Combinator, thriving in a dynamic, high-velocity environment while honing entrepreneurial skills through direct collaboration with founders. Collaborating in full-stack development using the MERN stack, delivering scalable solutions aligned with cutting-edge AI applications."
+  },
+  {
+   "name": "CITIC",
+   "position": "SWE Research Intern (Part-time)",
+   "startDate": "2022-11",
+   "endDate": "2024-07",
+   "summary": "Three merit-based academic fellowships for my stay in the laboratory. Built a Product Line Engineering Development Factory with version control systems integration for product evolution management (via GitLab API). Using technologies such as Quasar, Vue.js, Express.js, MongoDB and Cypress.io."
+  },
+  {
+   "name": "Learnovate Centre",
+   "position": "Software Development Intern",
+   "startDate": "2021-06",
+   "endDate": "2021-08",
+   "summary": "Developed a Moodle plugin for enhancing its engagement and reducing online learning isolation. Moodle instance deployment and management."
+  },
+  {
+   "name": "Teleperformance",
+   "position": "Helpdesk and Data Center Support Intern",
+   "startDate": "2018-04",
+   "endDate": "2018-06",
+   "summary": "Management of computers in an Active Directory. Installation of images through MDT in client computers. Hardware maintenance. Installation and configuration of workstations. Remote Desktop assistance with Dameware and TS. Technical support in Portuguese and English to client companies such as Google, Facebook and Netflix."
+  }
+ ],
+ "volunteer": [
+  {
+   "organization": "HackSpain 2026",
+   "position": "General Judge",
+   "startDate": "2026-09",
+   "endDate": "2026-09",
+   "url": "https://hackspain.com/gran-premio"
+  }
+ ],
+ "education": [
+  {
+   "institution": "Georgia Institute of Technology",
+   "area": "Computer Science",
+   "studyType": "MS",
+   "startDate": "2026",
+   "summary": "Specialization in Artificial Intelligence"
+  },
+  {
+   "institution": "University of A Coruña",
+   "area": "Computer Science",
+   "studyType": "BEng",
+   "startDate": "2020-09",
+   "endDate": "2024-07",
+   "summary": "Graduated with Extraordinary Bachelor's Degree Award (highest possible distinction of each cohort). Earned honour reserved grades (matrícula de honor) in 20 courses, including the thesis / dissertation (10)."
+  },
+  {
+   "institution": "Hanyang University",
+   "area": "Computer Science (exchange program)",
+   "studyType": "Exchange",
+   "startDate": "2022-02",
+   "endDate": "2022-07",
+   "summary": "Earned distinction reserved grades in four courses."
+  },
+  {
+   "institution": "IES San Clemente",
+   "area": "Multi-platform Application Development",
+   "studyType": "Higher Technician",
+   "startDate": "2018-09",
+   "endDate": "2020-06",
+   "summary": "Graduated with honours. Second place in extraordinary higher-level vocational education regional awards."
+  },
+  {
+   "institution": "IES San Clemente",
+   "area": "Microcomputer Systems and Networks",
+   "studyType": "Technician",
+   "startDate": "2016-09",
+   "endDate": "2018-06",
+   "summary": "Graduated with honours. Erasmus+ exchange program at Instituto de Educação Técnica (Lisbon, Portugal)."
+  }
+ ],
+ "awards": [
+  {
+   "title": "The Exponential Fellowship",
+   "date": "2026",
+   "awarder": "Barrié Foundation",
+   "summary": "Excellence program placing top Spanish STEM graduates as engineers at top-tier Silicon Valley companies."
+  },
+  {
+   "title": "Fulbright Master's Scholarship (declined by choice)",
+   "date": "2026",
+   "awarder": "Fulbright Commission / U.S. and Spanish Governments"
+  },
+  {
+   "title": "Extraordinary Bachelor's Degree Award",
+   "date": "2025",
+   "awarder": "University of A Coruña",
+   "summary": "University-wide highest possible distinction of each cohort."
+  },
+  {
+   "title": "First Prize Winner, InditexTech Track",
+   "date": "2025",
+   "awarder": "HackUPC",
+   "summary": "Echolook, an AI-powered virtual fitting room."
+  },
+  {
+   "title": "Best Tool Presentation Award",
+   "date": "2024",
+   "awarder": "ECSA 2024 / SPLC 2024 (ACM)"
+  },
+  {
+   "title": "Best Open Licensed BSc/MSc Thesis Award",
+   "date": "2024",
+   "awarder": "Amtega / CIXUG"
+  },
+  {
+   "title": "Best Applied Bachelor's Thesis Award (Second prize)",
+   "date": "2024",
+   "awarder": "School of Computer Science, University of A Coruña"
+  },
+  {
+   "title": "Open Source Scientific Thesis Grant",
+   "date": "2024",
+   "awarder": "CICAS Chair, University of A Coruña"
+  },
+  {
+   "title": "Collaboration Scholarship",
+   "date": "2023",
+   "awarder": "Ministry of Education and Vocational Training, Government of Spain"
+  },
+  {
+   "title": "Collaboration Scholarship",
+   "date": "2022",
+   "awarder": "University of A Coruña"
+  },
+  {
+   "title": "Bilateral International Mobility Scholarship (ranked first)",
+   "date": "2022",
+   "awarder": "University of A Coruña"
+  },
+  {
+   "title": "International Mobility Grant (Non-EU Countries)",
+   "date": "2022",
+   "awarder": "Regional Government of Galicia"
+  },
+  {
+   "title": "Extraordinary higher-level vocational education regional award (Second place)",
+   "date": "2021",
+   "awarder": "Regional Government of Galicia"
+  },
+  {
+   "title": "Bronze Medal, Network Systems Administration, WorldSkills Spain",
+   "date": "2019",
+   "awarder": "Ministry of Education and Vocational Training, Government of Spain"
+  },
+  {
+   "title": "Gold Medal, Network Systems Administration, WorldSkills Galicia",
+   "date": "2018",
+   "awarder": "Regional Government of Galicia"
+  }
+ ],
+ "publications": [
+  {
+   "name": "Development of a PLE Factory Environment with GitLab Integration and following ISO/IEC 26580",
+   "publisher": "28th ACM International Systems and Software Product Line Conference (SPLC '24), Dommeldange, Luxembourg",
+   "releaseDate": "2024",
+   "url": "https://doi.org/10.1145/3646548.3678013"
+  }
+ ],
+ "references": [
+  {
+   "name": "Pablo Álvarez Castro, Technical Leader, Learnovate Centre",
+   "reference": "Alejandro demonstrated outstanding technical and interpersonal skills in carrying out his work at our research center. And he did so despite the challenges of language barriers, remote work, and constant technological advancements. Thanks to his abilities and attitude, Alejandro far exceeded my expectations, and I foresee a great future for him in both his professional and personal life."
+  },
+  {
+   "name": "Tiago Seixas, Information Security Professional, Siemens",
+   "reference": "Alejandro was my trainee at Teleperformance, he has always been very focused on achieve the proposed goals and he have a great team spirit."
+  }
+ ],
+ "meta": {
+  "canonical": "https://alejandrobujan.com/resume.json",
+  "lastModified": "2026-09-29"
+ }
+}

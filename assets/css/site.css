@@ -350,6 +350,37 @@ main { display: flex; flex-direction: column; gap: clamp(60px, 8vw, 104px); padd
 .about p { font-size: clamp(20px, 2.2vw, 27px); line-height: 1.4; font-family: var(--font-display); font-weight: 500; letter-spacing: -0.015em; max-width: none; }
 .about p em { font-style: normal; color: var(--accent); }
 
+/* holographic foil on a word (pointer-driven on desktop, slow drift on touch) */
+.holo {
+  --hx: 50%; --hy: 50%;
+  display: inline-block; font-weight: 650; color: transparent; -webkit-text-fill-color: transparent;
+  background-image:
+    radial-gradient(farthest-corner circle at var(--hx) var(--hy), rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.35) 28%, rgba(255, 255, 255, 0) 60%),
+    repeating-linear-gradient(-33deg, #f5f5f7 0%, #8e8e94 7%, #ffffff 14%, #5c5c62 21%, #d6d6db 28%, #7a7a80 35%, #f5f5f7 42%);
+  background-size: 220% 220%, 160% 160%;
+  background-position: var(--hx) var(--hy), calc(var(--hx) * 1.6) calc(var(--hy) * 1.6);
+  -webkit-background-clip: text; background-clip: text;
+  filter: brightness(1.08) contrast(1.05);
+  transition: background-position 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.holo.name { display: block; font-weight: inherit; }
+.holo-link { display: inline-flex; align-items: baseline; gap: 0.08em; text-decoration: none; }
+.holo-link .mini-arrow { width: 0.5em; height: 0.5em; align-self: flex-start; margin-top: 0.18em; color: var(--fg-3); transition: transform 0.3s var(--ease-spring), color 0.3s; }
+.holo-link:hover .mini-arrow { transform: translate(2px, -2px); color: var(--fg); }
+:root[data-theme="light"] .holo {
+  background-image:
+    radial-gradient(farthest-corner circle at var(--hx) var(--hy), rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.2) 28%, rgba(255, 255, 255, 0) 60%),
+    repeating-linear-gradient(-33deg, #3a3a3f 0%, #9a9aa0 7%, #1d1d1f 14%, #b8b8be 21%, #4a4a50 28%, #86868b 35%, #3a3a3f 42%);
+}
+@media (hover: none) {
+  .holo { animation: holo-drift 7s ease-in-out infinite alternate; transition: none; }
+}
+@keyframes holo-drift {
+  0% { background-position: 20% 30%, 10% 40%; }
+  50% { background-position: 70% 60%, 90% 70%; }
+  100% { background-position: 35% 85%, 40% 120%; }
+}
+
 /* timelines */
 .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(20px, 3vw, 32px); align-items: start; }
 .timeline { --r: var(--radius-xl); padding: 10px; }

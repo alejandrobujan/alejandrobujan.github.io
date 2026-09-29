@@ -293,6 +293,20 @@
     requestAnimationFrame(function () { requestAnimationFrame(function () { hero.classList.add("ready"); }); });
   }
 
+
+  /* ---------- holographic word: foil follows the pointer over its card ---------- */
+  if (finePointer) {
+    document.querySelectorAll(".holo").forEach(function (word) {
+      var card = word.closest(".glass, .hero") || word.parentElement;
+      card.addEventListener("pointermove", function (e) {
+        var r = card.getBoundingClientRect();
+        word.style.setProperty("--hx", ((e.clientX - r.left) / r.width * 100).toFixed(1) + "%");
+        word.style.setProperty("--hy", ((e.clientY - r.top) / r.height * 100).toFixed(1) + "%");
+      }, { passive: true });
+      card.addEventListener("pointerleave", function () { word.style.removeProperty("--hx"); word.style.removeProperty("--hy"); });
+    });
+  }
+
   /* ---------- pointer specular on glass ---------- */
   if (finePointer) {
     document.addEventListener("pointermove", function (e) {

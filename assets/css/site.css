@@ -424,7 +424,7 @@ footer { padding: 28px 0 calc(24px + env(safe-area-inset-bottom, 0px)); text-ali
 
 /* list pages (awards / scholarships) */
 .page-head { padding-top: clamp(110px, 16vw, 170px); }
-.page-head .back { display: inline-flex; align-items: center; gap: 8px; color: var(--fg-2); font-weight: 500; font-size: 14px; margin-bottom: 26px; }
+.page-head .back { display: flex; width: fit-content; align-items: center; gap: 8px; color: var(--fg-2); font-weight: 500; font-size: 14px; margin-bottom: 28px; }
 .page-head .back svg { width: 16px; height: 16px; }
 .page-head h1 { font-size: clamp(40px, 7vw, 84px); font-weight: 700; letter-spacing: -0.045em; line-height: 0.98; }
 .page-head .lede { margin-top: 16px; color: var(--fg-2); font-size: 17px; max-width: 60ch; }

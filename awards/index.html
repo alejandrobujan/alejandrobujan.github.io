@@ -131,6 +131,15 @@
 </main>
 
 <footer>© Alejandro Buján 2025. All rights reserved</footer>
+<script>
+(function () {
+  if (location.hash) return;
+  try { history.scrollRestoration = "manual"; } catch (e) {}
+  function top() { window.scrollTo(0, 0); }
+  top(); window.addEventListener("load", top); window.addEventListener("pageshow", top);
+  setTimeout(top, 60);
+})();
+</script>
 <script src="../assets/js/site.js"></script>
 </body>
 </html>

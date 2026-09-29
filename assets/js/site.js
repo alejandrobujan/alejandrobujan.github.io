@@ -187,6 +187,54 @@
   })();
 
 
+
+  /* ---------- intro sequence (home only) ---------- */
+  (function () {
+    var intro = document.getElementById("intro");
+    var heroH1 = document.querySelector(".hero h1");
+    if (!intro) return;
+    var played = false;
+    try { played = sessionStorage.getItem("introPlayed") === "1"; } catch (e) {}
+    function skip() { root.classList.remove("intro-on", "landing"); if (intro.parentNode) intro.parentNode.removeChild(intro); }
+    if (reduced || played || window.scrollY > 0 || !heroH1) { skip(); return; }
+    root.classList.add("intro-on");
+    var ih1 = intro.querySelector(".intro-h1");
+    var timers = [], phase = 0, fast = false, landed = false;
+    function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
+    function clear() { timers.forEach(clearTimeout); timers = []; }
+    function land() {
+      if (landed) return; landed = true; clear();
+      var k = fast ? 0.32 : 1;
+      intro.style.setProperty("--k", k); root.style.setProperty("--k", k);
+      intro.classList.add("p1", "p2", "p3");
+      // FLIP: move the intro title onto the real hero title
+      var a = ih1.getBoundingClientRect(), b = heroH1.getBoundingClientRect();
+      var s = b.width / a.width, dx = b.left - a.left, dy = b.top - a.top;
+      intro.classList.add("landing"); root.classList.add("landing");
+      var anim = ih1.animate(
+        [{ transform: "translate(0px, 0px) scale(1)" }, { transform: "translate(" + dx + "px, " + dy + "px) scale(" + s + ")" }],
+        { duration: 1150 * k, easing: "cubic-bezier(0.32, 0.72, 0, 1)", fill: "forwards" });
+      anim.onfinish = function () {
+        root.classList.remove("intro-on", "landing"); root.style.removeProperty("--k");
+        if (intro.parentNode) intro.parentNode.removeChild(intro);
+        try { sessionStorage.setItem("introPlayed", "1"); } catch (e) {}
+      };
+    }
+    function accelerate() {
+      if (landed) return; fast = true; clear();
+      intro.style.setProperty("--k", 0.32);
+      intro.classList.add("p1", "p2", "p3");
+      setTimeout(land, 260);
+    }
+    ["wheel", "touchstart", "keydown", "pointerdown"].forEach(function (ev) {
+      window.addEventListener(ev, accelerate, { passive: true, once: true });
+    });
+    at(350, function () { phase = 1; intro.classList.add("p1"); });
+    at(1250, function () { phase = 2; intro.classList.add("p2"); });
+    at(2350, function () { phase = 3; intro.classList.add("p3"); });
+    at(3450, land);
+  })();
+
   /* ---------- hero: glass card at the top, opens up on scroll ---------- */
   var hero = document.querySelector(".hero");
   if (hero) {

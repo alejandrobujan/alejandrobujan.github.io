@@ -96,7 +96,7 @@ p { margin: 0; }
 
 /* ---------- ambient background ---------- */
 #aurora {
-  position: fixed; inset: 0; width: 100%; height: 100%;
+  position: fixed; inset: 0; width: 100%; height: 100%; height: 100lvh;
   z-index: -2; pointer-events: none;
 }
 .grain {
@@ -185,7 +185,7 @@ main { display: flex; flex-direction: column; gap: clamp(60px, 8vw, 104px); padd
 
 /* ---------- hero ---------- */
 .hero {
-  padding-top: clamp(96px, 14vw, 150px);
+  padding-top: clamp(84px, 14vw, 150px);
   display: grid; grid-template-columns: 1.08fr 0.92fr; gap: clamp(28px, 5vw, 72px);
   align-items: center;
 }
@@ -471,15 +471,15 @@ footer { padding: 28px 0 calc(24px + env(safe-area-inset-bottom, 0px)); text-ali
   .about p { padding: 12px 12px 8px; }
   .pub { grid-template-columns: 1fr; gap: 12px; }
   .sec-head { flex-direction: column; align-items: flex-start; gap: 6px; }
-  .dock { top: auto; bottom: calc(env(safe-area-inset-bottom, 0px) + 12px); }
-  .dock-nav a { padding: 8px 10px; font-size: 13px; }
+  .dock { padding: 5px; }
+  .dock-nav a { padding: 7px 7px; font-size: 12.5px; }
+  .dock-btn { width: 32px; height: 32px; }
+  .dock-sep { margin-inline: 2px; }
   .dock-nav a .long { display: none; }
   .dock-nav a .short { display: inline; }
-  .section { scroll-margin-top: 24px; }
+  .section { scroll-margin-top: 80px; }
   .float-1 { left: -2%; } .float-2 { right: -2%; }
   .float { font-size: 12.5px; padding: 8px 12px 8px 8px; } .float img { width: 30px; height: 30px; }
-  main { padding-bottom: 120px; }
-  .toast { bottom: calc(env(safe-area-inset-bottom, 0px) + 76px); }
 }
 @media (max-width: 520px) {
   .awards-grid { grid-template-columns: 1fr; }

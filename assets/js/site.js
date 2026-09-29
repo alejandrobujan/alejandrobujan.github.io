@@ -41,8 +41,11 @@
       dark = isDark();
     }
     function size() {
-      W = c.width = Math.max(48, Math.round(window.innerWidth / SCALE));
-      H = c.height = Math.max(48, Math.round(window.innerHeight / SCALE));
+      // keep the short side at >= 140 px so gradients stay smooth on phones
+      var shortSide = Math.min(window.innerWidth, window.innerHeight);
+      var scale = Math.min(SCALE, Math.max(2, shortSide / 140));
+      W = c.width = Math.max(48, Math.round(window.innerWidth / scale));
+      H = c.height = Math.max(48, Math.round(window.innerHeight / scale));
     }
     function hexToRgb(h) {
       h = h.replace("#", "");
@@ -58,7 +61,7 @@
         var b = blobs[i];
         var x = (b.x + 0.12 * Math.sin(time * b.sx + b.ph)) * W;
         var y = (b.y + 0.12 * Math.cos(time * b.sy + b.ph)) * H;
-        var r = b.r * Math.max(W, H);
+        var r = b.r * Math.sqrt(W * H) * 1.15;
         var rgb = hexToRgb(colors[i] || "#888");
         var g = ctx.createRadialGradient(x, y, 0, x, y, r);
         g.addColorStop(0, "rgba(" + rgb.join(",") + "," + alpha + ")");

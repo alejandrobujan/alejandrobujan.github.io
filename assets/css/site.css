@@ -333,6 +333,8 @@ main { display: flex; flex-direction: column; gap: clamp(60px, 8vw, 104px); padd
 .award .year { font-family: var(--font-mono); font-size: 12.5px; color: var(--fg-3); font-variant-numeric: tabular-nums; }
 .award .laurel { width: 30px; height: 30px; border-radius: 10px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent); }
 .award .laurel svg { width: 16px; height: 16px; }
+.award .badges { display: flex; align-items: center; gap: 8px; }
+.award .org-logo { width: 30px; height: 30px; border-radius: 10px; object-fit: cover; box-shadow: inset 0 0 0 1px var(--hairline), 0 4px 10px -6px rgba(0, 0, 0, 0.5); }
 .award h3 { font-size: 19px; font-weight: 600; line-height: 1.2; letter-spacing: -0.02em; }
 .award .org { color: var(--fg-2); font-size: 13.5px; line-height: 1.4; }
 .award .view { margin-top: auto; }

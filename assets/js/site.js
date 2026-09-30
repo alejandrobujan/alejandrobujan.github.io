@@ -456,4 +456,55 @@
       } else fallback();
     });
   });
+  /* ---------- lightbox (award photos) ---------- */
+  (function () {
+    var photos = Array.prototype.slice.call(document.querySelectorAll(".entry-photo[role=button]"));
+    if (!photos.length) return;
+    var box = document.createElement("div");
+    box.className = "lightbox";
+    box.setAttribute("role", "dialog"); box.setAttribute("aria-modal", "true"); box.setAttribute("aria-label", "Photo");
+    box.innerHTML =
+      '<div class="lb-backdrop"></div>' +
+      '<figure class="lb-figure"><img alt=""><figcaption></figcaption></figure>' +
+      '<button type="button" class="lb-btn lb-close" aria-label="Close"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button>';
+    document.body.appendChild(box);
+    var img = box.querySelector("img"), cap = box.querySelector("figcaption");
+    var closeBtn = box.querySelector(".lb-close");
+    var lastFocus = null;
+
+    function captionFor(fig) {
+      var entry = fig.closest(".entry"); if (!entry) return;
+      var h = entry.querySelector("h2"), y = entry.querySelector(".year"), o = entry.querySelector(".org");
+      cap.textContent = "";
+      var t = document.createElement("span"); t.className = "lb-title";
+      t.textContent = (y ? y.textContent.trim() + " · " : "") + (h ? h.textContent.trim() : "");
+      cap.appendChild(t);
+      if (o && o.textContent.trim()) { var sub = document.createElement("span"); sub.className = "lb-sub"; sub.textContent = o.textContent.trim(); cap.appendChild(sub); }
+    }
+    function show(i) {
+      var src = photos[i].querySelector("img");
+      img.src = src.currentSrc || src.src; img.alt = src.alt || "";
+      captionFor(photos[i]);
+    }
+    function open(i) {
+      lastFocus = document.activeElement;
+      show(i);
+      box.classList.add("open"); root.classList.add("lb-open");
+      closeBtn.focus({ preventScroll: true });
+    }
+    function close() {
+      box.classList.remove("open"); root.classList.remove("lb-open");
+      if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+    }
+    photos.forEach(function (fig, i) {
+      fig.addEventListener("click", function () { open(i); });
+      fig.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(i); } });
+    });
+    closeBtn.addEventListener("click", close);
+    box.querySelector(".lb-backdrop").addEventListener("click", close);
+    img.addEventListener("click", close);
+    document.addEventListener("keydown", function (e) {
+      if (box.classList.contains("open") && e.key === "Escape") close();
+    });
+  })();
 })();

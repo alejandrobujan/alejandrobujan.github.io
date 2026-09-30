@@ -196,6 +196,33 @@ main { display: flex; flex-direction: column; gap: clamp(60px, 8vw, 104px); padd
 :root[data-theme="light"] .dock-btn .sun { display: block; }
 :root[data-theme="light"] .dock-btn .moon { display: none; }
 
+/* scroll hint: floating pill at the bottom edge, only while the hero is still a card */
+.scroll-hint {
+  position: fixed; left: 50%; bottom: calc(env(safe-area-inset-bottom, 0px) + 22px);
+  z-index: 50; --r: 999px;
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 10px 15px 10px 18px; border-radius: 999px;
+  font-family: var(--font-mono); font-size: 11.5px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--fg-2); cursor: pointer;
+  opacity: calc(1 - var(--hero-p, 0) * 4);
+  transform: translate(-50%, calc(var(--hero-p, 0) * 48px));
+  visibility: hidden;
+  transition: opacity 0.35s ease, transform 0.45s var(--ease-spring), color 0.25s, visibility 0s linear 0.45s;
+}
+.hint-on .scroll-hint { visibility: visible; transition: opacity 0.35s ease, transform 0.45s var(--ease-spring), color 0.25s, visibility 0s; }
+.scroll-hint:hover { color: var(--fg); transform: translate(-50%, calc(var(--hero-p, 0) * 48px - 2px)); }
+.scroll-hint:active { transform: translate(-50%, calc(var(--hero-p, 0) * 48px)) scale(0.97); }
+.scroll-hint svg { width: 16px; height: 24px; color: var(--fg); flex: none; overflow: visible; }
+.scroll-hint .wheel { animation: wheel 2.1s cubic-bezier(0.45, 0, 0.2, 1) infinite; }
+@keyframes wheel {
+  0% { transform: translateY(0); opacity: 1; }
+  55% { transform: translateY(7px); opacity: 0; }
+  56% { transform: translateY(0); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+.intro-on .scroll-hint { opacity: 0; }
+.intro-on.landing .scroll-hint { opacity: 1; transition: opacity calc(0.8s * var(--k, 1)) ease calc(0.7s * var(--k, 1)); }
+
 /* ---------- hero ---------- */
 .hero {
   --p: 0; /* 0 = glass card at the top of the page, 1 = open layout after scrolling */
@@ -212,7 +239,7 @@ main { display: flex; flex-direction: column; gap: clamp(60px, 8vw, 104px); padd
     0 0 0 1px rgba(var(--hero-edge-rgb), calc(0.08 * (1 - var(--p)))),
     0 28px 70px -28px rgba(0, 0, 0, calc(0.6 * (1 - var(--p))));
 }
-@media (min-width: 761px) { .hero.is-card { -webkit-backdrop-filter: blur(28px) saturate(1.7); backdrop-filter: blur(28px) saturate(1.7); } }
+@media (min-width: 961px) { .hero.is-card { -webkit-backdrop-filter: blur(28px) saturate(1.7); backdrop-filter: blur(28px) saturate(1.7); } }
 .hero::before {
   content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none;
   background: linear-gradient(135deg, var(--glass-spec) 0%, rgba(255, 255, 255, 0) 38%, rgba(255, 255, 255, 0) 62%, rgba(255, 255, 255, 0.10) 100%);
@@ -560,8 +587,24 @@ main.page-main { gap: 36px; }
 /* ---------- responsive ---------- */
 @media (max-width: 960px) {
   .awards-grid { grid-template-columns: 1fr 1fr; }
-  .hero { grid-template-columns: 1fr; }
-  .hero-visual { max-width: 520px; margin-inline: auto; width: 100%; }
+  /* the two hero columns no longer fit side by side: from here down the hero is always the phone card
+     (text left, small photo top-right, one transition at a scroll threshold) — never a stacked desktop card.
+     Nothing in the layout changes between states (constant padding/gap) so only the photo transform and
+     the card surface animate */
+  .hero { grid-template-columns: 1fr; padding: var(--card-pad); row-gap: 16px; --hero-fill-a: 0.09; margin-top: var(--hero-mt, clamp(84px, 14vw, 150px)); transition: background 1.4s ease, box-shadow 1.4s ease; }
+  .hero::before { transition: opacity 1.4s ease; }
+  .float-1 { left: 0; } .float-2 { right: 0; }
+  .hero-visual { width: 100%; max-width: 520px; margin-inline: auto 0; transform-origin: top right;
+    transform: translateY(calc(var(--dy, 0px) * (1 - var(--p)))) scale(calc(1 - (1 - var(--sc, 0.32)) * (1 - var(--p))));
+    margin-bottom: calc(var(--vh, 0px) * -1 * (1 - var(--p))); }
+  .hero.ready .hero-visual { transition: transform 1.4s cubic-bezier(0.32, 0.72, 0, 1); }
+  /* the bubbles only exist on the open layout; they fade in once the card opens */
+  .hero.ready .float { transition: opacity 0.9s ease; }
+  .float { opacity: var(--p); }
+  /* everything below the card stays hidden until the card opens; while it opens, the content below waits
+     for the photo to settle; at any other time the sections keep their normal scroll-reveal transitions */
+  .hero-opening main > :not(.hero), .hero-opening footer { transition: opacity 0.9s ease 1.15s; }
+  .hero-closed main > :not(.hero), .hero-closed footer { opacity: 0 !important; pointer-events: none; transition: opacity 0.4s ease 0s; }
 }
 @media (max-width: 760px) {
   .two-col, .recs, .more-grid, .links { grid-template-columns: 1fr; }
@@ -577,26 +620,8 @@ main.page-main { gap: 36px; }
   .dock-nav a .long { display: none; }
   .dock-nav a .short { display: inline; }
   .section { scroll-margin-top: 80px; }
-  .float-1 { left: 0; } .float-2 { right: 0; }
-  /* phone card state: text left, small photo top-right; opens up as --p goes to 1 */
-  /* phones: card opens/closes with one transition at a scroll threshold; nothing in the layout
-     changes between states (constant padding/gap, name always on two lines) so only the photo
-     transform and the card surface animate */
-  .hero { padding: var(--card-pad); row-gap: 16px; --hero-fill-a: 0.09; margin-top: var(--hero-mt, clamp(84px, 14vw, 150px)); transition: background 1.4s ease, box-shadow 1.4s ease; }
-  .hero::before { transition: opacity 1.4s ease; }
   .hero h1 { font-size: 40px; }
   .intro-h1 { font-size: 47px; }
-  .hero-visual { max-width: none; transform-origin: top right;
-    transform: translateY(calc(var(--dy, 0px) * (1 - var(--p)))) scale(calc(1 - 0.68 * (1 - var(--p))));
-    margin-bottom: calc(var(--vh, 0px) * -1 * (1 - var(--p))); }
-  .hero.ready .hero-visual { transition: transform 1.4s cubic-bezier(0.32, 0.72, 0, 1); }
-  .hero.ready .float { transition: opacity 0.9s ease; }
-  .float { opacity: var(--p); }
-  /* everything below the card stays hidden until the card opens */
-  /* while the card is opening, the content below waits for the photo to settle; at any other time the
-     sections keep their normal scroll-reveal transitions */
-  .hero-opening main > :not(.hero), .hero-opening footer { transition: opacity 0.9s ease 1.15s; }
-  .hero-closed main > :not(.hero), .hero-closed footer { opacity: 0 !important; pointer-events: none; transition: opacity 0.4s ease 0s; }
   .float { font-size: 12.5px; padding: 8px 12px 8px 8px; } .float img { width: 30px; height: 30px; }
 }
 @media (max-width: 520px) {
@@ -627,7 +652,7 @@ main.page-main { gap: 36px; }
   .glass { -webkit-backdrop-filter: none; backdrop-filter: none; background: var(--glass-solid); }
   .glass .glass, .glass-strong { background: var(--glass-solid-strong); }
   .glass::after { display: none; }
-  .dock.glass { -webkit-backdrop-filter: blur(20px) saturate(1.6); backdrop-filter: blur(20px) saturate(1.6); background: var(--glass); }
+  .dock.glass, .scroll-hint.glass { -webkit-backdrop-filter: blur(20px) saturate(1.6); backdrop-filter: blur(20px) saturate(1.6); background: var(--glass); }
   .chip.glass, .float.glass { background: var(--float-fill); }
   .grain { display: none; }
 }

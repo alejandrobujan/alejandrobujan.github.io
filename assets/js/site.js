@@ -253,12 +253,16 @@
   if (hero) {
     var heroTick = false, heroOpen = false, measureTimer = null, openingTimer = null;
     var heroCopy = hero.querySelector(".hero-copy"), heroVisual = hero.querySelector(".hero-visual");
-    function isPhone() { return window.innerWidth <= 760; }
+    function isPhone() { return window.innerWidth <= 960; } // same breakpoint as the CSS: below it the hero is the phone card
     function measure() {
       if (!isPhone() || !heroCopy || !heroVisual) return;
       var h1 = heroCopy.querySelector("h1");
       hero.style.setProperty("--dy", ((h1 ? h1.offsetTop : heroCopy.offsetTop) - heroVisual.offsetTop) + "px");
       hero.style.setProperty("--vh", heroVisual.offsetHeight + "px");
+      // closed-card photo: a fixed share of the card's inner width, so it grows with the viewport
+      // (the open photo is capped at 520px, so a constant scale would stop growing there)
+      var target = 0.32 * (hero.clientWidth - 2 * parseFloat(getComputedStyle(hero).paddingLeft));
+      if (heroVisual.offsetWidth) hero.style.setProperty("--sc", Math.min(0.6, target / heroVisual.offsetWidth).toFixed(3));
       // centre the closed card vertically; keep the value fixed afterwards so opening never shifts layout
       if (!heroOpen && window.scrollY < 25) {
         var mt = Math.max(84, Math.round((window.innerHeight - hero.offsetHeight) / 2));
@@ -286,7 +290,18 @@
       }
       hero.style.setProperty("--p", p.toFixed(3));
       hero.classList.toggle("is-card", p < 0.98);
+      // floating "scroll" hint: fades out over the first quarter of the opening, then leaves the layer
+      root.style.setProperty("--hero-p", p.toFixed(3));
+      root.classList.toggle("hint-on", p < 0.25);
     }
+    var hint = document.getElementById("scroll-hint");
+    if (hint) hint.addEventListener("click", function () {
+      var behavior = reduced ? "auto" : "smooth";
+      var about = document.getElementById("about");
+      // phones: just cross the opening threshold; desktop: land on the first section with the hero open
+      if (isPhone() || !about) window.scrollTo({ top: 120, behavior: behavior });
+      else about.scrollIntoView({ behavior: behavior, block: "start" });
+    });
     window.addEventListener("scroll", function () { if (!heroTick) { heroTick = true; requestAnimationFrame(heroUpdate); } }, { passive: true });
     window.addEventListener("resize", function () { measure(); heroUpdate(); });
     measure(); heroUpdate();

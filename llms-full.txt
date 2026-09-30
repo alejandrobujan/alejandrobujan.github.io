@@ -133,7 +133,7 @@ Merit-based mobility grant awarded to students with outstanding academic perform
 
 ## Volunteering
 ### General Judge — HackSpain 2026 — September 2026
-https://hackspain.com/gran-premio
+https://hackspain.com/
 
 ## Publications
 ### Development of a PLE Factory Environment with GitLab Integration and following ISO/IEC 26580 — 2024

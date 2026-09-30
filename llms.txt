@@ -44,7 +44,7 @@ LinkedIn: https://www.linkedin.com/in/alejandrobujan/ · GitHub: https://github.
 - SWE Research Intern (part-time), CITIC, Nov 2022 – Jul 2024. Three merit-based fellowships; built a Product Line Engineering Development Factory integrated with GitLab (Quasar, Vue.js, Express.js, MongoDB, Cypress).
 - Software Development Intern, Learnovate Centre, Jun – Aug 2021. Moodle plugin for engagement in online learning; Moodle deployment and management.
 - Helpdesk and Data Center Support Intern, Teleperformance, Apr – Jun 2018. Active Directory, MDT imaging, remote support in Portuguese and English for clients such as Google, Facebook and Netflix.
-- General Judge (volunteer), HackSpain 2026, September 2026. https://hackspain.com/gran-premio
+- General Judge (volunteer), HackSpain 2026, September 2026. https://hackspain.com/
 
 ## Education
 - BEng in Computer Science, University of A Coruña, 2020 – 2024. Extraordinary Bachelor's Degree Award.

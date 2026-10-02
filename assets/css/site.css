@@ -518,6 +518,8 @@ main { display: flex; flex-direction: column; gap: clamp(60px, 8vw, 104px); padd
 .project h3 { font-size: 24px; font-weight: 650; letter-spacing: -0.03em; }
 .project p { color: var(--fg-2); font-size: 15px; max-width: 52ch; }
 .project .view { margin-top: auto; padding-top: 8px; }
+.project .view-row { margin-top: auto; padding-top: 8px; display: flex; flex-wrap: wrap; gap: 6px 16px; }
+.project .view-row .view { margin-top: 0; padding-top: 0; }
 .project .tools { display: flex; gap: 6px; flex-wrap: wrap; }
 
 /* publication */

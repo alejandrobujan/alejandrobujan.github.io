@@ -507,13 +507,14 @@ main { display: flex; flex-direction: column; gap: clamp(60px, 8vw, 104px); padd
 .project { --r: var(--radius-xl); padding: 12px; display: flex; flex-direction: column; transition: transform 0.5s var(--ease-spring); }
 .project:hover { transform: translateY(-4px); }
 .project.w7 { grid-column: span 7; } .project.w5 { grid-column: span 5; }
+.project.desk-last { order: 1; } /* source order is the phone stack; on desktop this card closes the bento */
 .project .shot {
   border-radius: calc(var(--radius-xl) - 12px); overflow: hidden; aspect-ratio: 16 / 9;
   background: var(--bg-2); box-shadow: inset 0 0 0 1px var(--hairline);
   position: relative;
 }
-.project .shot img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease-spring); }
-.project:hover .shot img { transform: scale(1.03); }
+.project .shot img, .project .shot video { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s var(--ease-spring); }
+.project:hover .shot img, .project:hover .shot video { transform: scale(1.03); }
 .project .body { padding: 18px 12px 10px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
 .project h3 { font-size: 24px; font-weight: 650; letter-spacing: -0.03em; }
 .project p { color: var(--fg-2); font-size: 15px; max-width: 52ch; }
@@ -614,6 +615,7 @@ main.page-main { gap: 36px; }
 @media (max-width: 760px) {
   .two-col, .recs, .more-grid, .links { grid-template-columns: 1fr; }
   .project.w7, .project.w5 { grid-column: span 12; }
+  .project.desk-last { order: 0; }
   .about { grid-template-columns: 1fr; gap: 4px; }
   .about p { padding: 12px 12px 8px; }
   .pub { grid-template-columns: 1fr; gap: 12px; }

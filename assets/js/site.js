@@ -413,6 +413,22 @@
   }
 
 
+  /* ---------- demo videos: play only while on screen ---------- */
+  var vids = document.querySelectorAll("video[data-inview]");
+  if (vids.length && !reduced) {
+    if ("IntersectionObserver" in window) {
+      var vo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { var pr = en.target.play(); if (pr && pr.catch) pr.catch(function () {}); }
+          else en.target.pause();
+        });
+      }, { threshold: 0.25 });
+      vids.forEach(function (v) { vo.observe(v); });
+    } else {
+      vids.forEach(function (v) { v.autoplay = true; v.play(); });
+    }
+  }
+
   /* ---------- expandable timeline rows ---------- */
   document.querySelectorAll(".tl-row.expandable").forEach(function (row) {
     function toggle() {

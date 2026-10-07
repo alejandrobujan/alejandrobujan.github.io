@@ -522,6 +522,12 @@ main { display: flex; flex-direction: column; gap: clamp(60px, 8vw, 104px); padd
 .project .view-row { margin-top: auto; padding-top: 8px; display: flex; flex-wrap: wrap; gap: 6px 16px; }
 .project .view-row .view { margin-top: 0; padding-top: 0; }
 .project .tools { display: flex; gap: 6px; flex-wrap: wrap; }
+.gh-stats { display: inline-flex; gap: 6px; margin-left: 4px; vertical-align: middle; animation: gh-in 0.6s var(--ease-spring) both; }
+.gh-stats[hidden] { display: none; }
+.gh-stats .tag { margin-left: 0; display: inline-flex; align-items: center; gap: 5px; font-variant-numeric: tabular-nums; letter-spacing: 0; transition: color 0.3s; }
+.gh-stats .tag:hover { color: var(--fg); }
+.gh-stats svg { width: 12px; height: 12px; flex: none; }
+@keyframes gh-in { from { opacity: 0; transform: translateY(4px); } }
 
 /* publication */
 .pub { --r: var(--radius-lg); padding: 24px 26px; display: grid; grid-template-columns: auto 1fr auto; gap: 22px; align-items: center; }

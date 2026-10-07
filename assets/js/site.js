@@ -429,6 +429,37 @@
     }
   }
 
+  /* ---------- live GitHub stars / forks (public API, ETag so repeats don't count) ---------- */
+  document.querySelectorAll("[data-gh-repo]").forEach(function (box) {
+    var repo = box.getAttribute("data-gh-repo"), key = "gh:" + repo, etag = null;
+    function fmt(n) { return n >= 1000 ? (n / 1000).toFixed(n >= 10000 ? 0 : 1).replace(/\.0$/, "") + "k" : String(n); }
+    function paint(d) {
+      box.querySelectorAll("[data-gh]").forEach(function (el) {
+        var n = d[el.getAttribute("data-gh")];
+        if (typeof n === "number") el.textContent = fmt(n);
+      });
+      box.hidden = false;
+    }
+    try { var c = JSON.parse(sessionStorage.getItem(key)); if (c) { etag = c.etag; paint(c.data); } } catch (e) {}
+    function load() {
+      if (document.hidden || !window.fetch) return;
+      fetch("https://api.github.com/repos/" + repo, { headers: etag ? { "If-None-Match": etag } : {} })
+        .then(function (r) {
+          if (r.status === 304 || !r.ok) return;
+          var tag = r.headers.get("ETag");
+          return r.json().then(function (d) {
+            var data = { stargazers_count: d.stargazers_count, forks_count: d.forks_count };
+            etag = tag; paint(data);
+            try { sessionStorage.setItem(key, JSON.stringify({ etag: tag, data: data })); } catch (e) {}
+          });
+        })
+        .catch(function () {});
+    }
+    load();
+    setInterval(load, 60000);
+    document.addEventListener("visibilitychange", load);
+  });
+
   /* ---------- expandable timeline rows ---------- */
   document.querySelectorAll(".tl-row.expandable").forEach(function (row) {
     function toggle() {

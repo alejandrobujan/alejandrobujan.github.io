@@ -460,6 +460,26 @@
     document.addEventListener("visibilitychange", load);
   });
 
+  /* ---------- live X likes / replies (via our Cloudflare Worker, cached 5 min) ---------- */
+  document.querySelectorAll("[data-x-post]").forEach(function (box) {
+    var url = "https://x-stats.x-stats-worker.workers.dev/post/" + box.getAttribute("data-x-post");
+    function fmt(n) { return n >= 1000 ? (n / 1000).toFixed(1).replace(/\.0$/, "") + "k" : String(n); }
+    function load() {
+      if (document.hidden || !window.fetch) return;
+      fetch(url).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+        if (!d) return;
+        box.querySelectorAll("[data-x]").forEach(function (el) {
+          var n = d[el.getAttribute("data-x")];
+          if (typeof n === "number") el.textContent = fmt(n);
+        });
+        box.hidden = false;
+      }).catch(function () {});
+    }
+    load();
+    setInterval(load, 300000);
+    document.addEventListener("visibilitychange", load);
+  });
+
   /* ---------- expandable timeline rows ---------- */
   document.querySelectorAll(".tl-row.expandable").forEach(function (row) {
     function toggle() {

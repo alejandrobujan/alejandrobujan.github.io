@@ -90,7 +90,29 @@
    "roles": [
     "Designer and developer"
    ],
+   "type": "application (highlighted project)"
+  },
+  {
+   "name": "ECHOLOOK",
+   "description": "The AI-powered fitting room in your pocket: snap a photo, say what you want, and see Inditex styles on you in seconds.",
+   "highlights": [
+    "First Prize, InditexTech Track, HackUPC 2025."
+   ],
+   "startDate": "2025",
+   "url": "https://devpost.com/software/echolook",
+   "type": "hackathon project"
+  },
+  {
+   "name": "SPLALM",
+   "description": "SPLALM is a tool designed to manage Software Product Lines and the development lifecycle of products generated from them.",
+   "url": "https://gitlab.lbd.org.es/alejandro.bujan.pampin/splalm",
    "type": "application"
+  },
+  {
+   "name": "DBSW Battle Arena",
+   "description": "Fan romhack of Dragon Ball Z: Supersonic Warriors 2 for Nintendo DS: a pure fighting version with new characters to unlock.",
+   "url": "https://github.com/alejandrobujan/dbsw-battle-arena",
+   "type": "romhack"
   }
  ],
  "volunteer": [

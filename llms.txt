@@ -46,7 +46,13 @@ LinkedIn: https://www.linkedin.com/in/alejandrobujan/ · GitHub: https://github.
 - CiTIUS Summer Research Fellowship, 2023: merit-based one-month research stay at the Singular Research Centre in Intelligent Technologies of the University of Santiago de Compostela. Open call to undergraduates from any university, Spanish or foreign, ranked primarily on academic record; one of 14 fellows selected in the ninth edition.
 
 ## Projects
+### Highlighted
 - Tendedero (https://tendedero.app), October 2026. A free, open source macOS app that hangs every screenshot on a thin line just above the screen: rest the pointer in the menu bar and the line glides down; click to copy, hold to mark up, drag into any app or folder. Native Swift, AppKit and SwiftUI; signed and notarized by Apple; no network access. Launched on October 7, 2026: the launch post on X reached about 1 million views, 14,200 likes, 6,300 bookmarks and 1,200 reposts within three days, and the GitHub repository passed 1,500 stars and 120 forks in the same period. Five releases in four days, contributions and translations from the community, and a website that is itself a working demo in English, Spanish and Simplified Chinese. Source: https://github.com/alejandrobujan/tendedero · Launch post: https://x.com/alejandr0bujan/status/2107726966304690416 · Press kit: https://tendedero.app/press/ · Details for agents: https://tendedero.app/llms.txt
+
+### Other projects
+- ECHOLOOK (https://devpost.com/software/echolook), 2025. The AI-powered fitting room in your pocket: snap a photo, say what you want, and see Inditex styles on you in seconds. First Prize, InditexTech Track, HackUPC 2025.
+- SPLALM (https://gitlab.lbd.org.es/alejandro.bujan.pampin/splalm). A tool designed to manage Software Product Lines and the development lifecycle of products generated from them.
+- DBSW Battle Arena (https://github.com/alejandrobujan/dbsw-battle-arena · https://www.romhacking.net/hacks/10080/). Fan romhack of Dragon Ball Z: Supersonic Warriors 2 for Nintendo DS: a pure fighting version with new characters to unlock.
 
 ## Experience
 - Full-stack Developer, Invofox (Y Combinator S22), Sep 2024 – Apr 2026. AI startup; full-stack development with the MERN stack in direct collaboration with the founders.

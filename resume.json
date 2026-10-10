@@ -67,6 +67,32 @@
    "summary": "Management of computers in an Active Directory. Installation of images through MDT in client computers. Hardware maintenance. Installation and configuration of workstations. Remote Desktop assistance with Dameware and TS. Technical support in Portuguese and English to client companies such as Google, Facebook and Netflix."
   }
  ],
+ "projects": [
+  {
+   "name": "Tendedero",
+   "description": "A free, open source macOS app that hangs every screenshot on a thin line just above the screen. Rest the pointer in the menu bar and the line glides down; click to copy, hold to mark up, drag into any app or folder.",
+   "highlights": [
+    "Launch post on X reached about 1 million views, 14,200 likes, 6,300 bookmarks and 1,200 reposts within three days (October 2026).",
+    "GitHub repository passed 1,500 stars and 120 forks in its first three days, with contributions and translations from the community.",
+    "Five releases in four days; native Swift, AppKit and SwiftUI; signed and notarized by Apple; no network access.",
+    "Its website, tendedero.app, is a working demo of the app in the browser, in English, Spanish and Simplified Chinese."
+   ],
+   "keywords": [
+    "macOS",
+    "Swift",
+    "AppKit",
+    "SwiftUI",
+    "Open source",
+    "Screenshots"
+   ],
+   "startDate": "2026-10-07",
+   "url": "https://tendedero.app",
+   "roles": [
+    "Designer and developer"
+   ],
+   "type": "application"
+  }
+ ],
  "volunteer": [
   {
    "organization": "HackSpain 2026",
@@ -223,6 +249,6 @@
  ],
  "meta": {
   "canonical": "https://alejandrobujan.com/resume.json",
-  "lastModified": "2026-09-29"
+  "lastModified": "2026-10-10"
  }
 }

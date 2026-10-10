@@ -131,6 +131,13 @@ Merit-based grant awarded based on academic excellence for participation in UDC'
 ### International Mobility Grant (Non-EU Countries) — Regional Government of Galicia — 2022
 Merit-based mobility grant awarded to students with outstanding academic performance to support study abroad stays in non-EU countries. Used to fund the academic exchange at Hanyang University, South Korea (1700 €).
 
+## Projects
+### Tendedero — macOS app — October 2026 – Present
+https://tendedero.app · https://github.com/alejandrobujan/tendedero
+A free, open source macOS app that hangs every screenshot on a thin line just above the screen, each one in a glass frame on a clip. Rest the pointer in the menu bar and the line glides down; move away and it tucks itself out of sight. Click to copy, press and hold to open Markup, double click to open Preview, force click for Quick Look, drag into an app to send a copy, into a folder to keep it, or to the Trash to let it go. It can also take over screenshots so they skip the Desktop, hang screen recordings with trimming, and hang copied images. Native Swift, AppKit and SwiftUI, macOS 14 or later on Apple silicon and Intel, signed and notarized by Apple, MIT licensed, with no account, no network access and no analytics. Available in English, Spanish, Simplified Chinese, Turkish and Azerbaijani, and through Homebrew.
+Reception: launched on October 7, 2026. The launch post on X (https://x.com/alejandr0bujan/status/2107726966304690416) reached about 1 million views, 14,200 likes, 6,300 bookmarks, 1,200 reposts and 540 replies within three days, and the GitHub repository passed 1,500 stars and 120 forks in the same period. Five releases (1.0 to 1.4) followed in four days, with issues, pull requests and translations from contributors in several countries. The website, tendedero.app, is itself a working demo of the app in the browser, in English, Spanish and Simplified Chinese.
+Press kit: https://tendedero.app/press/ · Full text for agents: https://tendedero.app/llms-full.txt
+
 ## Volunteering
 ### General Judge — HackSpain 2026 — September 2026
 https://hackspain.com/

@@ -10,6 +10,9 @@ LinkedIn: https://www.linkedin.com/in/alejandrobujan/ · GitHub: https://github.
 - Exponential-Barrié Fellow, 2026. The Exponential Fellowship (Fundación Barrié) is a high-performance excellence program that selects top STEM graduates and technical professionals in Spain and places them as engineers at top-tier Silicon Valley companies, with visa sponsorship. Evidence: https://www.linkedin.com/feed/update/urn:li:activity:7500594634780295168/
 - MS in Computer Science at Georgia Institute of Technology, specialization in Artificial Intelligence, 2026 – present (in parallel with the Base10 role).
 
+## Projects
+- Tendedero (https://tendedero.app), October 2026. A free, open source macOS app that hangs every screenshot on a thin line just above the screen: rest the pointer in the menu bar and the line glides down; click to copy, hold to mark up, drag into any app or folder. Native Swift, AppKit and SwiftUI; signed and notarized by Apple; no network access. Launched on October 7, 2026: the launch post on X reached about 1 million views, 14,200 likes, 6,300 bookmarks and 1,200 reposts within three days, and the GitHub repository passed 1,500 stars and 120 forks in the same period. Five releases in four days, contributions and translations from the community, and a website that is itself a working demo in English, Spanish and Simplified Chinese. Source: https://github.com/alejandrobujan/tendedero · Launch post: https://x.com/alejandr0bujan/status/2107726966304690416 · Press kit: https://tendedero.app/press/ · Details for agents: https://tendedero.app/llms.txt
+
 ## Achievements, ordered by merit and difficulty
 
 ### 1. Selective programs (national-level selection)
@@ -61,3 +64,4 @@ LinkedIn: https://www.linkedin.com/in/alejandrobujan/ · GitHub: https://github.
 - Awards (8): https://alejandrobujan.com/awards/
 - Merit-based scholarships (8): https://alejandrobujan.com/scholarships/
 - Full text version: https://alejandrobujan.com/llms-full.txt
+- Tendedero, his macOS app: https://tendedero.app/ (summary for agents: https://tendedero.app/llms.txt)

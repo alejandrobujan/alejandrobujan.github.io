@@ -524,6 +524,9 @@ main { display: flex; flex-direction: column; gap: clamp(60px, 8vw, 104px); padd
 .project .tools { display: flex; gap: 6px; flex-wrap: wrap; }
 .gh-stats { display: inline-flex; flex-wrap: wrap; gap: 6px; margin-left: 4px; vertical-align: middle; animation: gh-in 0.6s var(--ease-spring) both; }
 .gh-stats[hidden] { display: none; }
+.project .trendshift { display: inline-block; margin: 12px 0 2px; line-height: 0; transition: transform 0.3s var(--ease-spring), opacity 0.3s; opacity: 0.94; }
+.project .trendshift:hover { opacity: 1; transform: translateY(-1px); }
+.project .trendshift img { width: 200px; height: auto; display: block; border-radius: 10px; }
 .gh-stats .tag { margin-left: 0; display: inline-flex; align-items: center; gap: 5px; font-variant-numeric: tabular-nums; letter-spacing: 0; transition: color 0.3s; }
 .gh-stats .tag:hover { color: var(--fg); }
 .gh-stats svg { width: 12px; height: 12px; flex: none; }

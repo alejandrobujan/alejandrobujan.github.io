@@ -460,6 +460,35 @@
     document.addEventListener("visibilitychange", load);
   });
 
+  /* ---------- Tendedero downloads: every release's assets from GitHub, plus the clones tendedero.app saves weekly; the saved total when GitHub does not answer ---------- */
+  document.querySelectorAll("[data-downloads]").forEach(function (box) {
+    var repo = box.getAttribute("data-downloads"), out = box.querySelector("[data-downloads-count]"), link = box.querySelector("a");
+    function fmt(n) { return n >= 1000 ? (n / 1000).toFixed(1).replace(/\.0$/, "") + "k" : String(n); }
+    if (!window.fetch || !window.Promise) return;
+    var live = fetch("https://api.github.com/repos/" + repo + "/releases?per_page=100")
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+      .then(function (list) {
+        return list.reduce(function (sum, r) {
+          return sum + (r.assets || []).reduce(function (a, x) { return a + (x.download_count || 0); }, 0);
+        }, 0);
+      })
+      .catch(function () { return null; });
+    var saved = fetch("https://tendedero.app/stats/data.json")
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .catch(function () { return null; });
+    Promise.all([live, saved]).then(function (res) {
+      var data = res[1], snaps = (data && data.snapshots) || [];
+      var downloads = typeof res[0] === "number" ? res[0] : snaps.length ? snaps[snaps.length - 1].downloadsTotal : null;
+      if (typeof downloads !== "number") return;
+      var clones = 0, days = (data && data.days) || {};
+      Object.keys(days).forEach(function (k) { clones += days[k].clones || 0; });
+      var total = downloads + clones;
+      out.textContent = fmt(total);
+      link.setAttribute("aria-label", total.toLocaleString("en") + " downloads of Tendedero, releases and clones");
+      box.hidden = false;
+    });
+  });
+
   /* ---------- live X likes / replies (via our Cloudflare Worker, cached 5 min) ---------- */
   document.querySelectorAll("[data-x-post]").forEach(function (box) {
     var url = "https://x-stats.x-stats-worker.workers.dev/post/" + box.getAttribute("data-x-post");

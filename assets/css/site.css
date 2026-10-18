@@ -529,6 +529,12 @@ main { display: flex; flex-direction: column; gap: clamp(60px, 8vw, 104px); padd
 .project .trendshift:hover { opacity: 1; transform: translateY(-1px); }
 .project .trendshift img { width: 116px; height: auto; display: block; border-radius: 8px; }
 @media (max-width: 760px) { .project .trendshift-pair { margin-left: 0; } }
+/* On desktop the badges sit together on their own line under the title, aligned with it. */
+@media (min-width: 761px) {
+  .project h3:has(.gh-stats) { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 6px; }
+  .project h3 .name { flex-basis: 100%; }
+  .project h3 .gh-stats { margin-left: 0; }
+}
 .gh-stats .tag { margin-left: 0; display: inline-flex; align-items: center; gap: 5px; font-variant-numeric: tabular-nums; letter-spacing: 0; transition: color 0.3s; }
 .gh-stats .tag:hover { color: var(--fg); }
 .gh-stats svg { width: 12px; height: 12px; flex: none; }

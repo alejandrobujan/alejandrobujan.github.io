@@ -429,9 +429,17 @@
     }
   }
 
-  /* ---------- live GitHub stars / forks (public API, ETag so repeats don't count) ---------- */
+  /* ---------- live GitHub stars / forks (public API, ETag so repeats don't count); when GitHub does not answer, the weekly snapshot tendedero.app publishes stands in ---------- */
   document.querySelectorAll("[data-gh-repo]").forEach(function (box) {
-    var repo = box.getAttribute("data-gh-repo"), key = "gh:" + repo, etag = null;
+    var repo = box.getAttribute("data-gh-repo"), key = "gh:" + repo, etag = null, painted = false;
+    var snapshotURL = box.getAttribute("data-gh-snapshot");
+    function fromSnapshot() {
+      if (painted || !snapshotURL) return;
+      fetch(snapshotURL).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+        var snaps = (d && d.snapshots) || [], last = snaps[snaps.length - 1];
+        if (!painted && last) paint({ stargazers_count: last.stars, forks_count: last.forks });
+      }).catch(function () {});
+    }
     function fmt(n) { return n >= 1000 ? (n / 1000).toFixed(n >= 10000 ? 0 : 1).replace(/\.0$/, "") + "k" : String(n); }
     function paint(d) {
       box.querySelectorAll("[data-gh]").forEach(function (el) {
@@ -439,13 +447,15 @@
         if (typeof n === "number") el.textContent = fmt(n);
       });
       box.hidden = false;
+      painted = true;
     }
     try { var c = JSON.parse(sessionStorage.getItem(key)); if (c) { etag = c.etag; paint(c.data); } } catch (e) {}
     function load() {
       if (document.hidden || !window.fetch) return;
       fetch("https://api.github.com/repos/" + repo, { headers: etag ? { "If-None-Match": etag } : {} })
         .then(function (r) {
-          if (r.status === 304 || !r.ok) return;
+          if (r.status === 304) return;
+          if (!r.ok) return fromSnapshot();
           var tag = r.headers.get("ETag");
           return r.json().then(function (d) {
             var data = { stargazers_count: d.stargazers_count, forks_count: d.forks_count };
@@ -453,7 +463,7 @@
             try { sessionStorage.setItem(key, JSON.stringify({ etag: tag, data: data })); } catch (e) {}
           });
         })
-        .catch(function () {});
+        .catch(fromSnapshot);
     }
     load();
     setInterval(load, 60000);

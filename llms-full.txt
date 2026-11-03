@@ -8,7 +8,7 @@ LinkedIn: https://www.linkedin.com/in/alejandrobujan/ · GitHub: https://github.
 
 ## Now (October 2026)
 - AI Lead at Base10 Partners (venture capital firm, San Francisco), May 2026 – present. Building AI-native tooling for venture investing workflows.
-- Exponential-Barrié Fellow, 2026. The Exponential Fellowship (Fundación Barrié) is a high-performance excellence program that selects top STEM graduates and technical professionals in Spain and places them as engineers at top-tier Silicon Valley companies, with visa sponsorship. Evidence: https://www.linkedin.com/feed/update/urn:li:activity:7500594634780295168/
+- Exponential-Barrié Fellow, 2026. The Exponential Fellowship (Fundación Barrié) is a high-performance excellence program that selects top STEM graduates and technical professionals in Spain and places them as engineers at top-tier Silicon Valley companies, with visa sponsorship. Evidence: https://www.goexponential.org/directory/fellows/alejandro-bujan · https://www.linkedin.com/feed/update/urn:li:activity:7500594634780295168/
 - MS in Computer Science at Georgia Institute of Technology, specialization in Artificial Intelligence, 2026 – present (in parallel with the Base10 role).
 - Creator of Tendedero, an open source macOS app launched in October 2026 (about 1 million views of the launch post, 1,500 GitHub stars in three days, 12,000 downloads in ten days). https://tendedero.app
 
@@ -134,7 +134,7 @@ Gold medal in the regional WorldSkills Galicia competition in Network Systems Ad
 ## Recognition — Merit-based Scholarships (8 entries, 2022 — 2026)
 ### The Exponential Fellowship — Barrié Foundation — 2026
 High-performance excellence program for top STEM graduates and technical professionals designed to accelerate the next generation of tech founders in Spain. It grants a full international immersion through employment and advanced mentorship as an Engineer at top-tier companies in Silicon Valley, including visa sponsorship, health insurance, travel expenses, and a competitive annual salary.
-Links: https://www.goexponential.org/ · https://www.linkedin.com/feed/update/urn:li:activity:7500594634780295168/
+Links: https://www.goexponential.org/directory/fellows/alejandro-bujan · https://www.linkedin.com/feed/update/urn:li:activity:7500594634780295168/
 
 ### Fulbright Master's Scholarship — Fulbright Commission / U.S. and Spanish Governments — 2026 (declined by choice)
 Highly competitive, merit-based funding awarded to top university graduates for the pursuit of Master's degree programs at universities in the United States. Granted by the Selection Committee based on academic excellence, leadership potential, and an impactful project to foster cultural and scientific understanding between both countries (up to $45,000 annually plus health insurance and travel expenses).

@@ -7,7 +7,7 @@ LinkedIn: https://www.linkedin.com/in/alejandrobujan/ · GitHub: https://github.
 
 ## Now
 - AI Lead at Base10 Partners (venture capital firm, San Francisco), May 2026 – present. Building AI-native tooling for venture investing workflows.
-- Exponential-Barrié Fellow, 2026. The Exponential Fellowship (Fundación Barrié) is a high-performance excellence program that selects top STEM graduates and technical professionals in Spain and places them as engineers at top-tier Silicon Valley companies, with visa sponsorship. Evidence: https://www.linkedin.com/feed/update/urn:li:activity:7500594634780295168/
+- Exponential-Barrié Fellow, 2026. The Exponential Fellowship (Fundación Barrié) is a high-performance excellence program that selects top STEM graduates and technical professionals in Spain and places them as engineers at top-tier Silicon Valley companies, with visa sponsorship. Evidence: https://www.goexponential.org/directory/fellows/alejandro-bujan · https://www.linkedin.com/feed/update/urn:li:activity:7500594634780295168/
 - MS in Computer Science at Georgia Institute of Technology, specialization in Artificial Intelligence, 2026 – present (in parallel with the Base10 role).
 - Creator of Tendedero, an open source macOS app launched in October 2026 (about 1 million views of the launch post, 1,500 GitHub stars in three days, 12,000 downloads in ten days). https://tendedero.app
 
